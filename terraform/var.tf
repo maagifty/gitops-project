@@ -5,6 +5,12 @@ variable "name" {
   
 }
 
+variable "project-id" {
+    description = "project id"
+    type = string
+  
+}
+
 variable "region" {
     description = "region to use"
     type = string
