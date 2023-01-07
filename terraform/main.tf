@@ -26,7 +26,7 @@ resource "google_container_cluster" "main" {
   location           = var.location
   initial_node_count = 3
   node_config {
-    service_account = google_service_account.main.email
+    service_account = google_service_account.default.email
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
