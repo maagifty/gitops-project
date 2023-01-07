@@ -5,6 +5,10 @@ terraform {
       version = "4.47.0"
     }
   }
+  
+  backend "gcs" {
+    bucket = "terraform-backend-hard-work-374007"
+  }
 }
 
 provider "google" {
@@ -17,7 +21,7 @@ resource "google_service_account" "default" {
   display_name = "${var.name}-sa"
 }
 
-resource "google_container_cluster" "primary" {
+resource "google_container_cluster" "main" {
   name     = "${var.name}-cluster"
   location = var.location
 
@@ -31,7 +35,7 @@ resource "google_container_cluster" "primary" {
 resource "google_container_node_pool" "primary_preemptible_nodes" {
   name       = "${var.name}-node-pool"
   location   = var.location
-  cluster    = google_container_cluster.primary.name
+  cluster    = google_container_cluster.main.name
   node_count = 2
 
   node_config {
