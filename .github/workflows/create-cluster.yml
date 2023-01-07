@@ -19,6 +19,14 @@ jobs:
       run: sed -i "s/<var.project_id>/${{ secrets.PROJECT_ID }}/g" main.tf && terraform init && terraform apply -auto-approve -var="project_id=${{ secrets.PROJECT_ID  }}"
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+    - id: 'auth'
+      name: 'Authenticate to Google Cloud'
+      uses: 'google-github-actions/auth@v1'
+      with:
+       # workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
+        service_account: ${{ secrets.GOOGLE_CREDENTIALS }}
+    
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
     - run: |-
