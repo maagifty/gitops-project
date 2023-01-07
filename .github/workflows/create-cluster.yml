@@ -25,7 +25,7 @@ jobs:
       uses: 'google-github-actions/auth@v1'
       with:
        # workload_identity_provider: 'projects/123456789/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
-        service_account: ${{ secrets.GOOGLE_CREDENTIALS }}
+        credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
     
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
