@@ -50,3 +50,5 @@ jobs:
   
     - name: Install Argo CD
       run: bash  ../scripts/install-argocd.sh
+    - name: create app
+      run: kubectl apply -f ../app/*
