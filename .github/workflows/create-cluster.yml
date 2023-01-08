@@ -36,6 +36,7 @@ jobs:
         set -- $(gcloud container clusters list | grep -v 'NAME' | awk '{print $2}')
         export GKE_ZONE=("$@")
 
-        echo $GKE_CLUSTER
-        echo $GKE_ZONE
+        gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
+
+        kubectl get no
     
