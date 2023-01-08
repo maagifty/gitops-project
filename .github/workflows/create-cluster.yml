@@ -42,5 +42,8 @@ jobs:
 
         gcloud container clusters get-credentials "$GKE_CLUSTER" --zone "$GKE_ZONE"
 
-        kubectl get no
+    - name: Deploy
+      run: |-
+        kubectl create ns argocd
+        kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.5.5/manifests/install.yaml
     
