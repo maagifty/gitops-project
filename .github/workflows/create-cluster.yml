@@ -31,6 +31,9 @@ jobs:
       uses: google-github-actions/setup-gcloud@v1
     - run: |-
         gcloud container clusters list | grep -v 'NAME' | awk '{print $1}'
-        export GKE_CLUSTER=("gcloud container clusters list | grep -v 'NAME'| awk '{print $1}'")
+        set -f
+        set -- $(gcloud container clusters list | grep -v 'NAME' | awk '{print $1}')
+        export GKE_CLUSTER=("$@")
+
         echo $GKE_CLUSTER
     
