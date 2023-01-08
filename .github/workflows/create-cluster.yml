@@ -30,10 +30,12 @@ jobs:
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
     - run: |-
-        gcloud container clusters list | grep -v 'NAME' | awk '{print $1}'
         set -f
         set -- $(gcloud container clusters list | grep -v 'NAME' | awk '{print $1}')
         export GKE_CLUSTER=("$@")
+        set -- $(gcloud container clusters list | grep -v 'NAME' | awk '{print $2}')
+        export GKE_ZONE=("$@")
 
         echo $GKE_CLUSTER
+        echo $GKE_ZONE
     
