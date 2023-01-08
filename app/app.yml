@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/CloudNat01/gitops-project.git
     targetRevision: HEAD
-    path: manifest/nginx.yaml
+    path: manifest/
   destination:
     server: https://kubernetes.default.svc
     namespace: default
