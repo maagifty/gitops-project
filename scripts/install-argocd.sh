@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Add the Argo CD repository
-helm repo add argo https://argoproj.github.io/argo-cd
+helm repo add argo https://github.com/argoproj/argo-helm/tree/main/charts/argo-cd
 
 # Update the repository cache
 helm repo update
